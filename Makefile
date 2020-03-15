@@ -2,7 +2,7 @@ CC = gcc
 FLAGS = -pedantic -g -Wall
 OFLAGS = 
 
-OBJECTS = eig_power.o main.o
+OBJECTS = lu_factor.o main.o
 CUNIT = -lcunit
 VALGRIND = valgrind --leak-check=full
 CACHEGRIND = valgrind --tool=cachegrind --cache-sim=no --branch-sim=yes
@@ -21,7 +21,7 @@ lu_factor.o: ./src/lu_factor.c ./src/lu_factor.h ./src/common.h
 	$(CC) $(FLAGS) $(OFLAGS) ./src/lu_factor.c -c 
 
 unittest: lu_factor.o ./test/unittest.c ./src/common.h
-	$(CC) $(FLAGS) $(OFLAGS) lu_fator.o ./test/unittest.c -o unittest $(CUNIT)
+	$(CC) $(FLAGS) $(OFLAGS) lu_factor.o ./test/unittest.c -o unittest $(CUNIT)
 
 clean:
 	rm -f *.o lu unittest cachegrind.* *.h~ *.c~ Makefile~
