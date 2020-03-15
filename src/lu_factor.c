@@ -18,6 +18,21 @@ matrix_t *create_empty_matrix(int size)
   return m;
 }
 
+void random_matrix(matrix_t *matrix)
+{
+  int size = matrix->size;
+  double **m = matrix->matrix;
+  int start = size * size;
+  for(int i = 0; i < size; ++i)
+    {
+      for(int j = 0; j < size; j++)
+	{
+	  m[i][j] = start;
+	  start -= 1;
+	}
+    }
+}
+
 void create_upper_matrix(matrix_t *m)
 {
   if(m == NULL)
