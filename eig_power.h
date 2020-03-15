@@ -9,4 +9,6 @@ void create_matrix_k(matrix_t *m);
 
 void create_matrix_m(matrix_t *m);
 
+void destroy_matrix(matrix_t *m);
+
 #endif

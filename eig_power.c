@@ -54,6 +54,19 @@ matrix_t *create_matrix(int size)
   return m;
 }
 
+void destroy_matrix(matrix_t *m)
+{
+  if(m == NULL)
+    return;
+  int size = m->size;
+  
+  for(int i = 0; i < size; ++i)
+    {
+      free(m->matrix[i]);
+    }
+  free(m->matrix);
+  free(m);
+}
 
 
 
