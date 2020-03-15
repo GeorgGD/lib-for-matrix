@@ -6,7 +6,7 @@ typedef struct matrix matrix_t;
 struct matrix
 {
   int size;
-  float **matrix;
+  double **matrix;
 };
 
 #endif
