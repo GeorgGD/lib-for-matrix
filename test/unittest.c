@@ -2,8 +2,8 @@
 #include <stdbool.h>
 #include <CUnit/Basic.h>
 #include <stdlib.h>
-#include "common.h"
-#include "eig_power.h"
+#include "../src/common.h"
+#include "../src/eig_power.h"
 
 int init_suite(void)
 {

@@ -14,17 +14,17 @@ CACHEGRIND = valgrind --tool=cachegrind --cache-sim=no --branch-sim=yes
 power_method: $(OBJECTS)
 	$(CC) $(FLAGS) $(OFLAGS) $(OBJECTS) -o power_method
 
-main.o: main.c
-	$(CC) $(FLAGS) $(OFLAGS) main.c -c
+main.o: ./src/main.c ./src/common.h 
+	$(CC) $(FLAGS) $(OFLAGS) ./src/main.c -c
 
-eig_power.o: eig_power.c eig_power.h
-	$(CC) $(FLAGS) $(OFLAGS) eig_power.c -c 
+eig_power.o: ./src/eig_power.c ./src/eig_power.h ./src/common.h
+	$(CC) $(FLAGS) $(OFLAGS) ./src/eig_power.c -c 
 
-unittest: eig_power.o unittest.c
-	$(CC) $(FLAGS) $(OFLAGS) eig_power.o unittest.c -o unittest $(CUNIT)
+unittest: eig_power.o ./test/unittest.c ./src/common.h
+	$(CC) $(FLAGS) $(OFLAGS) eig_power.o ./test/unittest.c -o unittest $(CUNIT)
 
 clean:
-	rm -f *.o power_method unittest test cachegrind.* *.h~ *.c~ Makefile~
+	rm -f *.o power_method unittest cachegrind.* *.h~ *.c~ Makefile~
 
 
 
