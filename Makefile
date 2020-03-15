@@ -11,20 +11,20 @@ CACHEGRIND = valgrind --tool=cachegrind --cache-sim=no --branch-sim=yes
 # BUILD
 ##################################################################################################
 
-power_method: $(OBJECTS)
-	$(CC) $(FLAGS) $(OFLAGS) $(OBJECTS) -o power_method
+lu: $(OBJECTS)
+	$(CC) $(FLAGS) $(OFLAGS) $(OBJECTS) -o lu
 
 main.o: ./src/main.c ./src/common.h 
 	$(CC) $(FLAGS) $(OFLAGS) ./src/main.c -c
 
-eig_power.o: ./src/eig_power.c ./src/eig_power.h ./src/common.h
-	$(CC) $(FLAGS) $(OFLAGS) ./src/eig_power.c -c 
+lu_factor.o: ./src/lu_factor.c ./src/lu_factor.h ./src/common.h
+	$(CC) $(FLAGS) $(OFLAGS) ./src/lu_factor.c -c 
 
-unittest: eig_power.o ./test/unittest.c ./src/common.h
-	$(CC) $(FLAGS) $(OFLAGS) eig_power.o ./test/unittest.c -o unittest $(CUNIT)
+unittest: lu_factor.o ./test/unittest.c ./src/common.h
+	$(CC) $(FLAGS) $(OFLAGS) lu_fator.o ./test/unittest.c -o unittest $(CUNIT)
 
 clean:
-	rm -f *.o power_method unittest cachegrind.* *.h~ *.c~ Makefile~
+	rm -f *.o lu unittest cachegrind.* *.h~ *.c~ Makefile~
 
 
 

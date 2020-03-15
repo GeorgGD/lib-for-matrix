@@ -3,7 +3,7 @@
 #include <CUnit/Basic.h>
 #include <stdlib.h>
 #include "../src/common.h"
-#include "../src/eig_power.h"
+#include "../src/lu_factor.h"
 
 int init_suite(void)
 {
