@@ -23,27 +23,15 @@ double inspect_matrix(matrix_t *matrix, int index_x, int index_y)
 
 void test_create_matrix()
 {
-  int size = 4;
-  matrix_t *matrix = create_matrix(size);
-  create_matrix_k(matrix);
-  CU_ASSERT_EQUAL(inspect_matrix(matrix, 1, 1), 2.0);
-  CU_ASSERT_EQUAL(inspect_matrix(matrix, 1, 2), -1.0);
-  CU_ASSERT_EQUAL(inspect_matrix(matrix, 1, 0), -1.0);
-  CU_ASSERT_EQUAL(inspect_matrix(matrix, 3, 3), 1.0);
-
-  destroy_matrix(matrix);
-}
-
-void test_matrix_m()
-{
-  int size = 4;
-  matrix_t *matrix = create_matrix(size);
-  create_matrix_m(matrix);
-  CU_ASSERT_EQUAL(inspect_matrix(matrix, 1, 1), 4.0);
-  CU_ASSERT_EQUAL(inspect_matrix(matrix, 1, 2), 1.0);
-  CU_ASSERT_EQUAL(inspect_matrix(matrix, 1, 0), 1.0);
-  CU_ASSERT_EQUAL(inspect_matrix(matrix, 3, 3), 2.0);
-
+  int size = 2;
+  matrix_t *matrix = create_empty_matrix(size);
+  random_matrix(matrix);
+  lu_factor(matrix);
+  CU_ASSERT_EQUAL(inspect_matrix(matrix, 0, 0), 4.0);
+  CU_ASSERT_EQUAL(inspect_matrix(matrix, 0, 1), 0.5);
+  CU_ASSERT_EQUAL(inspect_matrix(matrix, 1, 0), 3.0);
+  CU_ASSERT_EQUAL(inspect_matrix(matrix, 1, 1), -0.5);
+  
   destroy_matrix(matrix);
 }
 
@@ -62,8 +50,7 @@ int main()
     }
 
   if (
-      (NULL == CU_add_test(test_suite1, "Test create matrix", test_create_matrix)) ||
-      (NULL == CU_add_test(test_suite1, "Test matrix M", test_matrix_m))
+      (NULL == CU_add_test(test_suite1, "Test create matrix", test_create_matrix)) 
       )
     {
       CU_cleanup_registry();
