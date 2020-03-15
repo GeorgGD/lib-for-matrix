@@ -1,5 +1,5 @@
 #include "common.h"
-#include "eig_power.h"
+#include "lu_factor.h"
 
 int main()
 {
