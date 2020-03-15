@@ -3,8 +3,12 @@
 
 #include "common.h"
 
-matrix_t *create_matrix(int size);
+matrix_t *create_empty_matrix(int size);
+
+void random_matrix(matrix_t *matrix);
 
 void destroy_matrix(matrix_t *m);
 
+void lu_factor(matrix_t *matrix);
+  
 #endif

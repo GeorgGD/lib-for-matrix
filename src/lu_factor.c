@@ -8,11 +8,11 @@ matrix_t *create_empty_matrix(int size)
     return NULL;
   
   matrix_t *m = malloc(sizeof(matrix_t));
-  m->matrix = calloc(size, sizeof(float*));
+  m->matrix = calloc(size, sizeof(double*));
 
   for(int i = 0; i < size; ++i)
     {
-      m->matrix[i] = calloc(size, sizeof(float));
+      m->matrix[i] = calloc(size, sizeof(double));
     }
   m->size = size;
   return m;
@@ -46,5 +46,25 @@ void destroy_matrix(matrix_t *m)
   free(m);
 }
 
-
-
+void lu_factor(matrix_t *matrix)
+{
+  if(matrix == NULL)
+    return;
+  
+  double **m = matrix->matrix;
+  int size = matrix->size;
+  double diag;
+  
+  for(int i = 0; i < size; i++)
+    {
+      diag = m[i][i];
+      for(int j = i +1; j < size; j++)
+	{
+	  m[j][i] = m[j][i] / diag;
+	  for(int k = i + 1; k < size; k++)
+	    {
+	      m[j][k] = m[j][k] - m[j][i] * m[i][k]; 
+	    }
+	}
+    }
+}
