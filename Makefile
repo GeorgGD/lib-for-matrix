@@ -34,3 +34,6 @@ clean:
 
 test: unittest
 	./unittest
+
+mem_test: unittest
+	$(VALGRIND) ./unittest

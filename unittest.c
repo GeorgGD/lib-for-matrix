@@ -31,6 +31,7 @@ void test_create_matrix()
   CU_ASSERT_EQUAL(inspect_matrix(matrix, 1, 0), -1.0);
   CU_ASSERT_EQUAL(inspect_matrix(matrix, 3, 3), 1.0);
 
+  destroy_matrix(matrix);
 }
 
 void test_matrix_m()
@@ -42,6 +43,8 @@ void test_matrix_m()
   CU_ASSERT_EQUAL(inspect_matrix(matrix, 1, 2), 1.0);
   CU_ASSERT_EQUAL(inspect_matrix(matrix, 1, 0), 1.0);
   CU_ASSERT_EQUAL(inspect_matrix(matrix, 3, 3), 2.0);
+
+  destroy_matrix(matrix);
 }
 
 int main()
