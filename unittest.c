@@ -33,6 +33,17 @@ void test_create_matrix()
 
 }
 
+void test_matrix_m()
+{
+  int size = 4;
+  matrix_t *matrix = create_matrix(size);
+  create_matrix_m(matrix);
+  CU_ASSERT_EQUAL(inspect_matrix(matrix, 1, 1), 4.0);
+  CU_ASSERT_EQUAL(inspect_matrix(matrix, 1, 2), 1.0);
+  CU_ASSERT_EQUAL(inspect_matrix(matrix, 1, 0), 1.0);
+  CU_ASSERT_EQUAL(inspect_matrix(matrix, 3, 3), 2.0);
+}
+
 int main()
 {
   CU_pSuite test_suite1 = NULL;
@@ -48,7 +59,8 @@ int main()
     }
 
   if (
-      (NULL == CU_add_test(test_suite1, "Test create matrix", test_create_matrix))
+      (NULL == CU_add_test(test_suite1, "Test create matrix", test_create_matrix)) ||
+      (NULL == CU_add_test(test_suite1, "Test matrix M", test_matrix_m))
       )
     {
       CU_cleanup_registry();
