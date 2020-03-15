@@ -24,7 +24,7 @@ unittest: eig_power.o unittest.c
 	$(CC) $(FLAGS) $(OFLAGS) eig_power.o unittest.c -o unittest $(CUNIT)
 
 clean:
-	rm -f *.o power_method unittest test cachegrind.*
+	rm -f *.o power_method unittest test cachegrind.* *.h~ *.c~ Makefile~
 
 
 
