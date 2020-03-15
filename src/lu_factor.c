@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include "common.h"
 
+//TODO: create upper matrix
+//TODO: create lower matrix
+//TODO: Optimizations
+//Deadline: 20/03/16 !!!!!!
+
 matrix_t *create_empty_matrix(int size)
 {
   if(size == 0)
