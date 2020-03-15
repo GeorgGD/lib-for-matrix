@@ -20,6 +20,24 @@ void create_matrix_k(matrix_t *m)
   m->matrix[end][end] = 1;
 }
 
+void create_matrix_m(matrix_t *m)
+{
+  if(m == NULL)
+    return;
+  
+  int size = m->size;
+  int end = size-1;
+  int n = 0;
+  for(int i = 0; i < end; ++i)
+    {
+      m->matrix[i][n] = 4;
+      m->matrix[i][n+1] = 1;
+      m->matrix[i+1][n] = 1;
+      n++;
+    }
+  m->matrix[end][end] = 2;
+}
+
 matrix_t *create_matrix(int size)
 {
   if(size == 0)

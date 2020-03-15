@@ -7,4 +7,6 @@ matrix_t *create_matrix(int size);
 
 void create_matrix_k(matrix_t *m);
 
+void create_matrix_m(matrix_t *m);
+
 #endif
