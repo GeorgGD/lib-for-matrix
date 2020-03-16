@@ -13,7 +13,7 @@ matrix_t *create_empty_matrix(int size)
     return NULL;
   
   matrix_t *m = malloc(sizeof(matrix_t));
-  m->matrix = calloc(size, sizeof(double*));
+  m->matrix = malloc(size * sizeof(double*));
 
   for(int i = 0; i < size; ++i)
     {
@@ -38,18 +38,30 @@ void random_matrix(matrix_t *matrix)
     }
 }
 
-void create_upper_matrix(matrix_t *m)
+matrix_t *create_upper_matrix(matrix_t *m)
 {
   if(m == NULL)
     return;
-  
+  int size = m->size;
+  matrix_t *upper_matrix = create_empty_matrix(size);
+  double ** lu_matrix = m->matrix;
+
+  for(int i = 0; i < size; ++i)
+    {
+      upper_matrix->matrix[i][i] = lu_matrix[i][i];
+      for(int j = i; j < size; ++j)
+	{
+	  upper_matrix->matrix[i][j] = lu_matrix[i][j];
+	}
+    }
+  return upper_matrix;
 }
 
 void create_lower_matrix(matrix_t *m)
 {
   if(m == NULL)
     return;
-  
+
 }
 
 void destroy_matrix(matrix_t *m)
