@@ -68,7 +68,7 @@ matrix_t *create_lower_matrix(matrix_t *m)
   for(int i = 0; i < size; ++i)
     {
       lower_matrix->matrix[i][i] = 1;
-      for(int j = i; j < size; ++j)
+      for(int j = i + 1; j < size; ++j)
 	{
 	  lower_matrix->matrix[j][i] = lu_matrix[j][i];
 	}

@@ -13,4 +13,6 @@ void lu_factor(matrix_t *matrix);
 
 matrix_t *create_upper_matrix(matrix_t *m);
 
+matrix_t *create_lower_matrix(matrix_t *m);
+
 #endif
