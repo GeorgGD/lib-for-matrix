@@ -41,7 +41,7 @@ void random_matrix(matrix_t *matrix)
 matrix_t *create_upper_matrix(matrix_t *m)
 {
   if(m == NULL)
-    return;
+    return NULL;
   int size = m->size;
   matrix_t *upper_matrix = create_empty_matrix(size);
   double ** lu_matrix = m->matrix;
@@ -57,10 +57,10 @@ matrix_t *create_upper_matrix(matrix_t *m)
   return upper_matrix;
 }
 
-void create_lower_matrix(matrix_t *m)
+matrix_t *create_lower_matrix(matrix_t *m)
 {
   if(m == NULL)
-    return;
+    return NULL;
   int size = m->size;
   matrix_t *lower_matrix = create_empty_matrix(size);
   double ** lu_matrix = m->matrix;
