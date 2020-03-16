@@ -61,7 +61,19 @@ void create_lower_matrix(matrix_t *m)
 {
   if(m == NULL)
     return;
+  int size = m->size;
+  matrix_t *lower_matrix = create_empty_matrix(size);
+  double ** lu_matrix = m->matrix;
 
+  for(int i = 0; i < size; ++i)
+    {
+      lower_matrix->matrix[i][i] = 1;
+      for(int j = i; j < size; ++j)
+	{
+	  lower_matrix->matrix[j][i] = lu_matrix[j][i];
+	}
+    }
+  return lower_matrix;
 }
 
 void destroy_matrix(matrix_t *m)
