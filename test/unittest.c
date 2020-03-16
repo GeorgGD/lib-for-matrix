@@ -64,6 +64,23 @@ void test_upper_matrix()
   destroy_matrix(upper_matrix);
 }
 
+void test_lower_matrix()
+{
+  int size = 4;
+  matrix_t *matrix = create_empty_matrix(size);
+  random_matrix(matrix);
+  lu_factor(matrix);
+  matrix_t * lower_matrix = create_lower_matrix(matrix);
+  CU_ASSERT_EQUAL(inspect_matrix(lower_matrix, 0, 0), 1.0);
+  CU_ASSERT_EQUAL(inspect_matrix(lower_matrix, 0, 1), 0.75);
+  CU_ASSERT_EQUAL(inspect_matrix(lower_matrix, 1, 1), 1.0);
+  CU_ASSERT_EQUAL(inspect_matrix(lower_matrix, 1, 2), 2.0);
+  CU_ASSERT_EQUAL(inspect_matrix(lower_matrix, 1, 3), 3.0);
+
+  destroy_matrix(matrix);
+  destroy_matrix(lower_matrix);
+}
+
 int main()
 {
   CU_pSuite test_suite1 = NULL;
@@ -81,7 +98,9 @@ int main()
   if (
       (NULL == CU_add_test(test_suite1, "Test create matrix", test_create_matrix)) ||
       (NULL == CU_add_test(test_suite1, "Test LU factorization", test_lu_factor)) ||
-      (NULL == CU_add_test(test_suite1, "Test upper matrix", test_upper_matrix)) 
+      (NULL == CU_add_test(test_suite1, "Test upper matrix", test_upper_matrix)) ||
+      (NULL == CU_add_test(test_suite1, "Test lower matrix", test_lower_matrix)) 
+
       )
     {
       CU_cleanup_registry();
