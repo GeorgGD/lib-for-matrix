@@ -25,15 +25,15 @@ matrix_t *create_empty_matrix(int size)
 
 void random_matrix(matrix_t *matrix)
 {
-  int size = matrix->size;
+  const int size = matrix->size;
   double **m = matrix->matrix;
-  int start = size * size;
+  int start = 1;
   for(int i = 0; i < size; ++i)
     {
       for(int j = 0; j < size; j++)
 	{
 	  m[i][j] = start;
-	  start -= 1;
+	  start += 1;
 	}
     }
 }
@@ -42,7 +42,7 @@ matrix_t *create_upper_matrix(matrix_t *m)
 {
   if(m == NULL)
     return NULL;
-  int size = m->size;
+  const int size = m->size;
   matrix_t *upper_matrix = create_empty_matrix(size);
   double ** lu_matrix = m->matrix;
 
@@ -61,7 +61,7 @@ matrix_t *create_lower_matrix(matrix_t *m)
 {
   if(m == NULL)
     return NULL;
-  int size = m->size;
+  const int size = m->size;
   matrix_t *lower_matrix = create_empty_matrix(size);
   double ** lu_matrix = m->matrix;
 
@@ -80,7 +80,7 @@ void destroy_matrix(matrix_t *m)
 {
   if(m == NULL)
     return;
-  int size = m->size;
+  const int size = m->size;
   
   for(int i = 0; i < size; ++i)
     {
@@ -96,7 +96,7 @@ void lu_factor(matrix_t *matrix)
     return;
   
   double **m = matrix->matrix;
-  int size = matrix->size;
+  const int size = matrix->size;
   double diag;
   
   for(int i = 0; i < size; i++)
