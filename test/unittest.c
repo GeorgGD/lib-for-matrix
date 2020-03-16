@@ -26,6 +26,19 @@ void test_create_matrix()
   int size = 2;
   matrix_t *matrix = create_empty_matrix(size);
   random_matrix(matrix);
+  CU_ASSERT_EQUAL(inspect_matrix(matrix, 0, 0), 4.0);
+  CU_ASSERT_EQUAL(inspect_matrix(matrix, 0, 1), 2.0);
+  CU_ASSERT_EQUAL(inspect_matrix(matrix, 1, 0), 3.0);
+  CU_ASSERT_EQUAL(inspect_matrix(matrix, 1, 1), 1.0);
+  
+  destroy_matrix(matrix);
+}
+
+void test_lu_factor()
+{
+  int size = 2;
+  matrix_t *matrix = create_empty_matrix(size);
+  random_matrix(matrix);
   lu_factor(matrix);
   CU_ASSERT_EQUAL(inspect_matrix(matrix, 0, 0), 4.0);
   CU_ASSERT_EQUAL(inspect_matrix(matrix, 0, 1), 0.5);
@@ -50,7 +63,8 @@ int main()
     }
 
   if (
-      (NULL == CU_add_test(test_suite1, "Test create matrix", test_create_matrix)) 
+      (NULL == CU_add_test(test_suite1, "Test create matrix", test_create_matrix)) ||
+      (NULL == CU_add_test(test_suite1, "Test LU factorization", test_lu_factor))
       )
     {
       CU_cleanup_registry();
