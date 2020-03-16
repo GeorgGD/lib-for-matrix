@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include "common.h"
 
-//TODO: create upper matrix
-//TODO: create lower matrix
+//TODO: Solve problem whem lu_factor needs to handle zeroes
 //TODO: Optimizations
 //Deadline: 20/03/16 !!!!!!
 

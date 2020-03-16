@@ -3,6 +3,7 @@
 #include "common.h"
 #include "lu_factor.h"
 
+//TODO: Finish the else part to run performance tests
 static void print_matrix(matrix_t *m)
 {
   if(m == NULL)
