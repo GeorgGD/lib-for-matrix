@@ -60,7 +60,8 @@ void test_upper_matrix()
   CU_ASSERT_EQUAL(inspect_matrix(upper_matrix, 1, 1), -0.25);
   CU_ASSERT_EQUAL(inspect_matrix(upper_matrix, 2, 1), -0.5);
   
-  destroy_matrix(matrix);  
+  destroy_matrix(matrix);
+  destroy_matrix(upper_matrix);
 }
 
 int main()
