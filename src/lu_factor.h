@@ -10,5 +10,7 @@ void random_matrix(matrix_t *matrix);
 void destroy_matrix(matrix_t *m);
 
 void lu_factor(matrix_t *matrix);
-  
+
+matrix_t *create_upper_matrix(matrix_t *m);
+
 #endif
