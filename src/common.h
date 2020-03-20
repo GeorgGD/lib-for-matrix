@@ -3,7 +3,7 @@
 
 typedef struct matrix matrix_t;
 
-struct matrix
+struct __attribute__((__packed__)) matrix
 {
   int size;
   double **matrix;
