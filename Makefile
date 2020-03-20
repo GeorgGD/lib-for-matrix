@@ -38,11 +38,22 @@ P = 1
 run: lu
 	./lu $(S) $(P)
 
-performance: lu
-	time ./lu 20 0
-
 test: unittest
 	./unittest
 
 mem_test: unittest
 	$(VALGRIND) ./unittest
+
+mem_main: lu
+	$(VALGRIND) ./lu 9 0
+
+cache: lu
+	$(CACHEGRIND) ./lu 9 0
+
+gprof:
+	make clean
+	make -s OFLAGS="-pg"
+	./lu 20 0
+	gprof lu gmon.out
+
+
