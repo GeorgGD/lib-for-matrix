@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "common.h"
+#include <math.h>
 
 //TODO: Solve problem whem lu_factor needs to handle zeroes
 //TODO: Optimizations
@@ -26,13 +27,13 @@ void random_matrix(matrix_t *matrix)
 {
   const int size = matrix->size;
   double **m = matrix->matrix;
-  int start = 1;
+  int start = size*size;
   for(int i = 0; i < size; ++i)
     {
       for(int j = 0; j < size; j++)
 	{
 	  m[i][j] = start;
-	  start += 1;
+	  start -= 1;
 	}
     }
 }
