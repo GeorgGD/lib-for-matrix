@@ -13,7 +13,7 @@ static void print_matrix(matrix_t *m)
     {
       for(int j = 0; j < size; ++j)
 	{
-	  printf("%f ", m->matrix[i][j]);
+	  printf("%.4f ", m->matrix[i][j]);
 	}
       printf("\n");
     }
@@ -51,7 +51,14 @@ int main(int argc, char **argv)
 	}
       else
 	{
-	  
+	  matrix_t *matrix = create_empty_matrix(size);
+	  random_matrix(matrix);
+	  lu_factor(matrix);
+	  matrix_t *upper_matrix = create_upper_matrix(matrix);
+	  matrix_t *lower_matrix = create_lower_matrix(matrix);
+	  destroy_matrix(matrix);
+	  destroy_matrix(upper_matrix);
+	  destroy_matrix(lower_matrix);
 	}
     }
   
