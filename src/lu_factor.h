@@ -3,16 +3,50 @@
 
 #include "common.h"
 
+/**
+ * @file lu_factor.h
+ * @author Georgios Davakos
+ * @date 21 mar 2020
+ * @brief A program that performs the LU-factorization
+ */
+
+/**
+ * @brief creates an empty square matrix
+ * @param size - the size of the matrix
+ * @return pointer to empty square matrix
+ */
 matrix_t *create_empty_matrix(int size);
 
+/**
+ * @brief gives the matrix new and random values
+ * @param matrix - a matrix
+ */
 void random_matrix(matrix_t *matrix);
 
+/**
+ * @brief deallocates a matrix
+ * @param m - a matrix
+ */
 void destroy_matrix(matrix_t *m);
 
+/**
+ * @brief LU-factorization of a given matrix
+ * @param matrix - a matrix
+ */
 void lu_factor(matrix_t *matrix);
 
+/**
+ * @brief the upper triangle of a given matrix
+ * @param m - matrix
+ * @return the upper triangle of a given matrix
+ */
 matrix_t *create_upper_matrix(matrix_t *m);
 
+/**
+ * @brief the lower triangle of a given matrix
+ * @param m - matrix
+ * @return the lower triangle of a given matrix
+ */
 matrix_t *create_lower_matrix(matrix_t *m);
 
 #endif

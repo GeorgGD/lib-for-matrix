@@ -1,11 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "common.h"
-#include <math.h>
 
 //TODO: Solve problem whem lu_factor needs to handle zeroes
 //TODO: Optimizations
-//Deadline: 20/03/16 !!!!!!
+//Deadline: 21/03/16 !!!!!!
 
 matrix_t *create_empty_matrix(int size)
 {
