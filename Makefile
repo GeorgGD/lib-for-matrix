@@ -1,5 +1,5 @@
 CC = gcc
-FLAGS = -pedantic -g -Wall
+FLAGS = -pedantic -g -Wall  
 OFLAGS = 
 
 OBJECTS = lu_factor.o main.o

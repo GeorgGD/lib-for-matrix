@@ -37,7 +37,7 @@ int main(int argc, char **argv)
 	  random_matrix(matrix);
 	  printf("\nThe matrix we are going to LU factorize:\n");
 	  print_matrix(matrix);
-	  lu_factor(matrix);
+	  lu_factor(matrix, 4);
 	  matrix_t *upper_matrix = create_upper_matrix(matrix);
 	  matrix_t *lower_matrix = create_lower_matrix(matrix);
 	  printf("\nThe upper matrix: \n");
@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 	{
 	  matrix_t *matrix = create_empty_matrix(size);
 	  random_matrix(matrix);
-	  lu_factor(matrix);
+	  lu_factor(matrix, 4);
 	  matrix_t *upper_matrix = create_upper_matrix(matrix);
 	  matrix_t *lower_matrix = create_lower_matrix(matrix);
 	  destroy_matrix(matrix);

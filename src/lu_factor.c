@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <omp.h>
 #include "common.h"
 
 //TODO: Optimizations
@@ -88,11 +89,12 @@ void destroy_matrix(matrix_t *m)
   free(m);
 }
 
-void lu_factor(matrix_t *matrix)
+void lu_factor(matrix_t *matrix, int num_threads)
 {
   if(matrix == NULL)
     return;
-  
+
+  int nthreads = num_threads;
   double **m = matrix->matrix;
   const int size = matrix->size;
   double diag;
@@ -103,6 +105,7 @@ void lu_factor(matrix_t *matrix)
       for(int j = i +1; j < size; j++)
 	{
 	  m[j][i] = m[j][i] / diag;
+#pragma omp parallel for num_threads(nthreads)  
 	  for(int k = i + 1; k < size; k++)
 	    {
 	      m[j][k] = m[j][k] - m[j][i] * m[i][k]; 

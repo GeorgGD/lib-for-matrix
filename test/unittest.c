@@ -39,7 +39,7 @@ void test_lu_factor()
   int size = 2;
   matrix_t *matrix = create_empty_matrix(size);
   random_matrix(matrix);
-  lu_factor(matrix);
+  lu_factor(matrix, 1);
   CU_ASSERT_EQUAL(inspect_matrix(matrix, 0, 0), 4.0);
   CU_ASSERT_EQUAL(inspect_matrix(matrix, 0, 1), 0.5);
   CU_ASSERT_EQUAL(inspect_matrix(matrix, 1, 0), 3.0);
@@ -53,7 +53,7 @@ void test_upper_matrix()
   int size = 4;
   matrix_t *matrix = create_empty_matrix(size);
   random_matrix(matrix);
-  lu_factor(matrix);
+  lu_factor(matrix, 1);
   matrix_t * upper_matrix = create_upper_matrix(matrix);
   CU_ASSERT_EQUAL(inspect_matrix(upper_matrix, 0, 0), 16.0);
   CU_ASSERT_EQUAL(inspect_matrix(upper_matrix, 0, 1), 0);
@@ -69,7 +69,7 @@ void test_lower_matrix()
   int size = 4;
   matrix_t *matrix = create_empty_matrix(size);
   random_matrix(matrix);
-  lu_factor(matrix);
+  lu_factor(matrix, 1);
   matrix_t * lower_matrix = create_lower_matrix(matrix);
   CU_ASSERT_EQUAL(inspect_matrix(lower_matrix, 0, 0), 1.0);
   CU_ASSERT_EQUAL(inspect_matrix(lower_matrix, 0, 1), 0.75);

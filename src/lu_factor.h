@@ -33,7 +33,7 @@ void destroy_matrix(matrix_t *m);
  * @brief LU-factorization of a given matrix
  * @param matrix - a matrix
  */
-void lu_factor(matrix_t *matrix);
+void lu_factor(matrix_t *matrix, int num_threads);
 
 /**
  * @brief the upper triangle of a given matrix
