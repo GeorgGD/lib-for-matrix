@@ -11,4 +11,4 @@ do
     echo N = ${arrN[$index]}  
 done
 
-echo done, bye
+echo The executable is done
