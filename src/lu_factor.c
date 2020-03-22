@@ -5,7 +5,7 @@
 //TODO: Optimizations
 //Deadline: 22/03/16 !!!!!!
 
-matrix_t *create_empty_matrix(int size)
+matrix_t *create_empty_matrix(const int size)
 {
   if(size == 0)
     return NULL;
