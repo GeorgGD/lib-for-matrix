@@ -1,9 +1,9 @@
 #!/bin/bash
 
 make -s clean
-make -s OFLAGS="-O3 -march=native -ffast-math"
+make ##-s OFLAGS="-O3 -march=native -ffast-math"
 
-arrN=(10 20 30 40 50 60 70 80 90 100 150 200 300 400 500 600 700 800 900 1000 1500 2000)
+arrN=(10 20 30 40 50 60 70 80 90 100 150 200 300 400 500 600 700 800 900 1000 1500 2000 3000)
 
 for index in ${!arrN[*]}
 do
@@ -11,4 +11,5 @@ do
     echo N = ${arrN[$index]}  
 done
 
+make clean
 echo The executable is done
