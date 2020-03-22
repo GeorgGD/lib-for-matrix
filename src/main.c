@@ -21,7 +21,7 @@ static void print_matrix(matrix_t *m)
 
 int main(int argc, char **argv)
 {
-  if(argc != 3)
+  if(argc != 4)
     {
       puts("Please only provide the size of the matrix you want to use");
       return 1;
@@ -30,14 +30,14 @@ int main(int argc, char **argv)
     {
       const int size = atoi(argv[1]);
       const int print = atoi(argv[2]);
-
+      const int num_threads = atoi(argv[3]);
       if(print == 1)
 	{
 	  matrix_t *matrix = create_empty_matrix(size);
 	  random_matrix(matrix);
 	  printf("\nThe matrix we are going to LU factorize:\n");
 	  print_matrix(matrix);
-	  lu_factor(matrix, 4);
+	  lu_factor(matrix, num_threads);
 	  matrix_t *upper_matrix = create_upper_matrix(matrix);
 	  matrix_t *lower_matrix = create_lower_matrix(matrix);
 	  printf("\nThe upper matrix: \n");
@@ -53,7 +53,7 @@ int main(int argc, char **argv)
 	{
 	  matrix_t *matrix = create_empty_matrix(size);
 	  random_matrix(matrix);
-	  lu_factor(matrix, 4);
+	  lu_factor(matrix, num_threads);
 	  matrix_t *upper_matrix = create_upper_matrix(matrix);
 	  matrix_t *lower_matrix = create_lower_matrix(matrix);
 	  destroy_matrix(matrix);

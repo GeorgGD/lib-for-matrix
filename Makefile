@@ -35,9 +35,10 @@ clean:
 
 S = 3
 P = 1
+N = 4
 
 run: lu
-	./lu $(S) $(P)
+	./lu $(S) $(P) $(N)
 
 test: unittest
 	./unittest
@@ -46,15 +47,15 @@ mem_test: unittest
 	$(VALGRIND) ./unittest
 
 mem_main: lu
-	$(VALGRIND) ./lu 9 0
+	$(VALGRIND) ./lu 9 0 1
 
 cache: lu
-	$(CACHEGRIND) ./lu 9 0
+	$(CACHEGRIND) ./lu 9 0 1
 
 gprof:
 	make clean
 	make -s OFLAGS="-pg"
-	./lu 1000 0
+	./lu 1000 0 1
 	gprof lu gmon.out
 
 
