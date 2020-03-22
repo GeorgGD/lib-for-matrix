@@ -7,7 +7,7 @@ arrN=(10 20 30 40 50 60 70 80 90 100 150 200 300 400 500 600 700 800 900 1000 15
 
 for index in ${!arrN[*]}
 do
-    { time (./lu ${arrN[$index]} 0) >/dev/null; } 2>&1 | grep real | cut -f 2 | cut -c 3- | sed "s/.$/	${arrN[$index]}/" >> time.txt
+    { time (./lu ${arrN[$index]} 0 4) >/dev/null; } 2>&1 | grep real | cut -f 2 | cut -c 3- | sed "s/.$/	${arrN[$index]}/" >> time.txt
     echo N = ${arrN[$index]}  
 done
 
