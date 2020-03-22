@@ -2,9 +2,8 @@
 #include <stdlib.h>
 #include "common.h"
 
-//TODO: Solve problem whem lu_factor needs to handle zeroes
 //TODO: Optimizations
-//Deadline: 21/03/16 !!!!!!
+//Deadline: 22/03/16 !!!!!!
 
 matrix_t *create_empty_matrix(int size)
 {
