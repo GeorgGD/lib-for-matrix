@@ -1,9 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <omp.h>
 #include "common.h"
 
 //TODO: Optimizations
 //Deadline: 22/03/16 !!!!!!
+
+static int nthreads;
 
 matrix_t *create_empty_matrix(const int size)
 {
@@ -88,12 +91,25 @@ void destroy_matrix(matrix_t *m)
   free(m);
 }
 
+static void inner_loop(int size, int i, double diag, double **m)
+{
+#pragma omp parallel for num_threads(nthreads)
+  for(int j = i +1; j < size; j++)
+    {
+      m[j][i] = m[j][i] / diag;
+      for(int k = i + 1; k < size; k++)
+	{
+	  m[j][k] = m[j][k] - m[j][i] * m[i][k]; 
+	}
+    }
+}
+
 void lu_factor(matrix_t *matrix, const int num_threads)
 {
   if(matrix == NULL)
     return;
 
-  const int nthreads = num_threads;
+  nthreads = num_threads;
   double **m = matrix->matrix;
   const int size = matrix->size;
   double diag;
@@ -101,13 +117,6 @@ void lu_factor(matrix_t *matrix, const int num_threads)
   for(int i = 0; i < size; i++)
     {
       diag = m[i][i];
-      for(int j = i +1; j < size; j++)
-	{
-	  m[j][i] = m[j][i] / diag;
-	  for(int k = i + 1; k < size; k++)
-	    {
-	      m[j][k] = m[j][k] - m[j][i] * m[i][k]; 
-	    }
-	}
+      inner_loop(size, i, diag, m);
     }
 }
