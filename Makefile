@@ -53,7 +53,7 @@ cache: lu
 gprof:
 	make clean
 	make -s OFLAGS="-pg"
-	./lu 20 0
+	./lu 1000 0
 	gprof lu gmon.out
 
 
