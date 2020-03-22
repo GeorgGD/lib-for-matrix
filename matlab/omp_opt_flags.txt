@@ -1,0 +1,6 @@
+3,792s = None
+1,894s = O1
+1,846s = O2
+1,805s = O3
+1,750s = Os
+1,773s = O3 with ffast-math
