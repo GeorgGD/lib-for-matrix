@@ -32,6 +32,7 @@ void destroy_matrix(matrix_t *m);
 /**
  * @brief LU-factorization of a given matrix
  * @param matrix - a matrix
+ * @param num_threads - the number of threads
  */
 void lu_factor(matrix_t *matrix, int num_threads);
 
