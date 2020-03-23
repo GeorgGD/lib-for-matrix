@@ -26,17 +26,17 @@ matrix_t *create_empty_matrix(const int size)
 
 void random_matrix(matrix_t *matrix)
 {
-  const int size = matrix->size;
+  const int size = matrix->size -1;
   double **m = matrix->matrix;
-  int start = size*size;
+  int j = 0;
   for(int i = 0; i < size; ++i)
     {
-      for(int j = 0; j < size; j++)
-	{
-	  m[i][j] = start;
-	  start -= 1;
-	}
+      m[i][i] = 4;
+      m[i][j+1] = -2;
+      m[i+1][j] = -2;
+	j++;
     }
+  m[size][size] = 2;
 }
 
 matrix_t *create_upper_matrix(matrix_t *m)
