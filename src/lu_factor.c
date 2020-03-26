@@ -130,11 +130,6 @@ static int determinant_aux(matrix_t *m)
     {
       det *= matrix[i][i];
     }
-
-  int sign = size % 2;
-
-  if(sign == 1)
-    det = -1 *det;
   
   return det;
 }
