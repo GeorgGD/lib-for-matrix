@@ -1,14 +1,21 @@
 #ifndef __EIG_POWER_H__
 #define __EIG_POWER_H__
 
-#include "common.h"
-
 /**
  * @file lu_factor.h
  * @author Georgios Davakos
  * @date 21 mar 2020
  * @brief A program that performs the LU-factorization
  */
+
+typedef struct matrix matrix_t;
+
+struct __attribute__((__packed__)) matrix
+{
+  int size;
+  double **matrix;
+};
+
 
 /**
  * @brief creates an empty square matrix

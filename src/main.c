@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "common.h"
 #include "lu_factor.h"
 
 //TODO: Finish the else part to run performance tests

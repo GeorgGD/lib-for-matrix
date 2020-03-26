@@ -1,12 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <omp.h>
-#include "common.h"
-
-//TODO: Optimizations
-//Deadline: 22/03/16 !!!!!!
+#include "lu_factor.h"
 
 static int nthreads;
+
+void destroy_matrix(matrix_t *m)
+{
+  if(m == NULL)
+    return;
+  const int size = m->size;
+  
+  for(int i = 0; i < size; ++i)
+    {
+      free(m->matrix[i]);
+    }
+  free(m->matrix);
+  free(m);
+}
 
 matrix_t *create_empty_matrix(const int size)
 {
@@ -75,20 +86,6 @@ matrix_t *create_lower_matrix(matrix_t *m)
 	}
     }
   return lower_matrix;
-}
-
-void destroy_matrix(matrix_t *m)
-{
-  if(m == NULL)
-    return;
-  const int size = m->size;
-  
-  for(int i = 0; i < size; ++i)
-    {
-      free(m->matrix[i]);
-    }
-  free(m->matrix);
-  free(m);
 }
 
 static void inner_loop(int size, int i, double diag, double **m)
