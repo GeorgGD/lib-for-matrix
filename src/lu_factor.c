@@ -3,7 +3,7 @@
 #include <omp.h>
 #include "lu_factor.h"
 
-static int nthreads;
+static int nthreads = 1;
 
 void destroy_matrix(matrix_t *m)
 {
@@ -116,4 +116,35 @@ void lu_factor(matrix_t *matrix, const int num_threads)
       diag = m[i][i];
       inner_loop(size, i, diag, m);
     }
+}
+
+
+/************************************** DETERMINENT FUNCS *********************************/
+
+static int determinant_aux(matrix_t *m)
+{
+  int det = 1;
+  size_t size = m->size;
+  double **matrix = m->matrix;
+  for(int i = 0; i < size; ++i)
+    {
+      det *= matrix[i][i];
+    }
+
+  int sign = size % 2;
+
+  if(sign == 1)
+    det = -1 *det;
+  
+  return det;
+}
+
+int determinant(matrix_t *matrix)
+{
+  if(matrix == NULL)
+    return 0;
+
+  lu_factor(matrix, nthreads);
+  int det = determinant_aux(matrix);
+  return det;
 }
