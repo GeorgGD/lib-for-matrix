@@ -102,13 +102,13 @@ void test_if_invertible()
   int size = 4;
   matrix_t *matrix = create_empty_matrix(size);
   random_matrix(matrix);
-  CU_ASSERT_TRUE(is_matrix_invertible(matrix));
+  CU_ASSERT_TRUE(is_invertible(matrix));
   destroy_matrix(matrix);
 
   size = 3;
   matrix = create_empty_matrix(size);
   random_matrix(matrix);
-  CU_ASSERT_TRUE(is_matrix_invertible(matrix));
+  CU_ASSERT_TRUE(is_invertible(matrix));
   destroy_matrix(matrix);
 }
 

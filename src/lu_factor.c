@@ -145,7 +145,7 @@ int determinant(matrix_t *matrix)
   return det;
 }
 
-bool is_matrix_invertible(matrix_t *matrix)
+bool is_invertible(matrix_t *matrix)
 {
   if(matrix == NULL)
     return false;
