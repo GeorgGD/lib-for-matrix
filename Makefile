@@ -25,7 +25,7 @@ unittest: lu_factor.o ./test/unittest.c ./src/common.h
 	$(CC) $(FLAGS) $(OFLAGS) lu_factor.o ./test/unittest.c -o unittest $(CUNIT)
 
 clean:
-	rm -f *.o lu unittest cachegrind.* *.h~ *.c~ Makefile~ *.sh~
+	rm -f *.o lu unittest cachegrind.* *.h~ *.c~ Makefile~ *.sh~ *.org~
 
 
 
