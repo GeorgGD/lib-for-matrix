@@ -57,7 +57,8 @@ matrix_t *create_upper_matrix(matrix_t *m);
  */
 matrix_t *create_lower_matrix(matrix_t *m);
 
-
 int determinant(matrix_t *matrix);
+
+bool is_matrix_invertible(matrix_t *matrix);
 
 #endif
