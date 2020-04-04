@@ -143,3 +143,14 @@ int determinant(matrix_t *matrix)
   int det = determinant_aux(matrix);
   return det;
 }
+
+bool is_matrix_invertible(matrix_t *matrix)
+{
+  if(matrix == NULL)
+    return false;
+
+  int det = determinant(matrix);
+  if(det != 0)
+    return true;
+  return false;
+}
