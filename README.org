@@ -7,5 +7,6 @@ Please wait until the project reaches at least version 0.1.
 ** The posible operations
 1. LU-Decomposition
 2. Determinant 
-3. Check if matrix is invertible (WIP)
+3. Check if matrix is invertible 
 4. Inverse of matrix (WIP)
+
