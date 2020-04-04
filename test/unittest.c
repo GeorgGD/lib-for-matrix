@@ -97,6 +97,21 @@ void test_determinant()
   destroy_matrix(matrix);
 }
 
+void test_if_invertible()
+{
+  int size = 4;
+  matrix_t *matrix = create_empty_matrix(size);
+  random_matrix(matrix);
+  CU_ASSERT_TRUE(is_matrix_invertible(matrix));
+  destroy_matrix(matrix);
+
+  size = 3;
+  matrix = create_empty_matrix(size);
+  random_matrix(matrix);
+  CU_ASSERT_TRUE(is_matrix_invertible(matrix));
+  destroy_matrix(matrix);
+}
+
 int main()
 {
   CU_pSuite test_suite1 = NULL;
@@ -116,7 +131,8 @@ int main()
       (NULL == CU_add_test(test_suite1, "Test LU factorization", test_lu_factor)) ||
       (NULL == CU_add_test(test_suite1, "Test upper matrix", test_upper_matrix)) ||
       (NULL == CU_add_test(test_suite1, "Test lower matrix", test_lower_matrix)) ||
-      (NULL == CU_add_test(test_suite1, "Test determinant", test_determinant))
+      (NULL == CU_add_test(test_suite1, "Test determinant", test_determinant)) ||
+      (NULL == CU_add_test(test_suite1, "Test if invertible", test_if_invertible))
       )
     {
       CU_cleanup_registry();
