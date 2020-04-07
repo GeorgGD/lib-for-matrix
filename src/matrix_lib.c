@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <omp.h>
-#include "lu_factor.h"
+#include "matrix_lib.h"
 
 static int nthreads = 1;
 

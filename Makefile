@@ -3,7 +3,7 @@ CC = gcc
 FLAGS = -pedantic -g -Wall -fopenmp 
 OFLAGS = 
 
-OBJECTS = lu_factor.o main.o
+OBJECTS = matrix_lib.o main.o
 CUNIT = -lcunit
 VALGRIND = valgrind --leak-check=full
 CACHEGRIND = valgrind --tool=cachegrind --cache-sim=no --branch-sim=yes
@@ -18,11 +18,11 @@ lu: $(OBJECTS)
 main.o: ./src/main.c ./src/common.h 
 	$(CC) $(FLAGS) $(OFLAGS) ./src/main.c -c
 
-lu_factor.o: ./src/lu_factor.c ./src/lu_factor.h ./src/common.h
-	$(CC) $(FLAGS) $(OFLAGS) ./src/lu_factor.c -c 
+matrix_lib.o: ./src/matrix_lib.c ./src/matrix_lib.h ./src/common.h
+	$(CC) $(FLAGS) $(OFLAGS) ./src/matrix_lib.c -c 
 
-unittest: lu_factor.o ./test/unittest.c ./src/common.h
-	$(CC) $(FLAGS) $(OFLAGS) lu_factor.o ./test/unittest.c -o unittest $(CUNIT)
+unittest: matrix_lib.o ./test/unittest.c ./src/common.h
+	$(CC) $(FLAGS) $(OFLAGS) matrix_lib.o ./test/unittest.c -o unittest $(CUNIT)
 
 clean:
 	rm -f *.o lu unittest cachegrind.* *.h~ *.c~ Makefile~ *.sh~ *.org~
