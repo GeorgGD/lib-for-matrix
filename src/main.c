@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "lu_factor.h"
+#include "matrix_lib.h"
 
 //TODO: Finish the else part to run performance tests
 static void print_matrix(matrix_t *m)
