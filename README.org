@@ -10,3 +10,7 @@ Please wait until the project reaches at least version 0.1.
 3. Check if matrix is invertible 
 4. Inverse of matrix (WIP)
 
+*** To Be Added   
+1. Power Method
+2. Gershgorian disc
+3. Jacobi's method
